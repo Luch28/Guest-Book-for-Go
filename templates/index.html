@@ -46,15 +46,13 @@
 			</form>
 		</div>
 		<hr>
-		
-
 		<!--Entries-->
 		<div>
-			{{range .}}
+			{{ range . }}
 			<div class="entries">
 				<div style="margin-right: 5px;">
-					<b>{{.Name}}</b>
-					<p>{{.Email}}</p>
+					<b>{{ .Name }}</b>
+					<p>{{ .Email }}</p>
 				</div>
 				<p style="color: #09db33;">{{.Message}} </p>
 				<small>{{ .Timestamp.Format "02.01.2006 15:04:05" }}</small>

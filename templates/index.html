@@ -1,0 +1,70 @@
+{{ define "guest" }}
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+	body {
+		display: flex;
+		justify-content: center;
+		background-color: #000;
+	}
+
+	* {
+		font-size: 20px;
+		line-height: 20px;
+	}
+
+	p {
+		color: #fff;
+		margin: 4px 0;
+		margin-left: 2px;
+	}
+
+	b {
+		color: #f81303;
+	}
+
+	h1 {
+		color: #fff;
+		margin: 0;
+	}
+
+	.entries {
+		width: 600px;
+		display: flex;
+	}
+</style>
+<body>
+	<div>
+		<!--Add entries-->
+		<h1>Guest book</h1>
+		<div style="display: flex; max-width: 600px;">
+			<form action="/submit" method="POST">
+				<input name="name" placeholder="name" required>
+				<input name="email" placeholder="email" required>
+				<textarea name="message" placeholder="message" required></textarea>
+				<button>Send</button>
+			</form>
+		</div>
+		<hr>
+		
+
+		<!--Entries-->
+		<div>
+			{{range .}}
+			<div class="entries">
+				<div style="margin-right: 5px;">
+					<b>{{.Name}}</b>
+					<p>{{.Email}}</p>
+				</div>
+				<p style="color: #09db33;">{{.Message}} </p>
+				<small>{{ .Timestamp.Format "02.01.2006 15:04:05" }}</small>
+			</div>
+			{{else}}
+			<p>No entries.</p>
+			{{ end }}
+		</div>
+		<p>by Luch28</p>
+	</div>
+</body>
+</html>
+{{ end }}
